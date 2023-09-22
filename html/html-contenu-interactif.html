@@ -1,0 +1,113 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contenu interactif</title>
+  </head>
+  <body>
+    <p>Cette page illustre quelques éléments
+    de <a href="http://developers.whatwg.org/content-models.html#interactive-content">
+    contenu interactif</a> en HTML.</p>
+    <section>
+      <h1>Texte editable</h1>
+      <p contenteditable>
+        Ce texte que vous êtes en train de lire peut être édité, grâce
+        à l'attribut global <code>contenteditable</code>. Il suffit de
+        cliquer dessus.
+      </p>
+    </section>
+    <section>
+      <h1>Composants d'interaction</h1>
+      <p>
+        <button name="button">Cliquez-moi</button>
+      </p>
+      <p>
+        <details>
+          <summary>Dépliez-moi</summary>
+          <p>Votre navigateur supporte
+            l'élément <code>&lt;details&gt;</code>, car il vous a permis
+            de déplier ces détails.</p>
+        </details>
+      </p>
+      <p>
+        <label>Texte :</label>
+        <input type="text" value="Entrez du texte ici">
+      </p>
+      <p>
+        <label>Date :</label>
+        <input type="date">
+      </p>
+      <p>
+        <label>Semaine :</label>
+        <input type="week">
+      </p>
+      <p>
+        <label>Checkbox :</label>
+        <input type="checkbox">
+      </p>
+      <p>
+        <label>Color :</label>
+        <input type="color">
+      </p>
+      <p>
+        <style>
+          input#demo-input:invalid {
+            background-color: #ffdddd;
+          }
+        </style>
+        <label>Courriel :</label>
+        <input type="email" id="demo-input">
+      </p>
+      <p>
+        <label>Fichier :</label>
+        <input type="file">
+      </p>
+      <p>
+        <label>Mot de passe :</label>
+        <input type="password">
+      </p>
+      <p>
+        <label>Nombre :</label>
+        <input type="number">
+      </p>
+      <p>
+        <label>Choix 1 :</label><input type="radio" name="demo"><br>
+        <label>Choix 2 :</label><input type="radio" name="demo"><br>
+        <label>Choix 3 :</label><input type="radio" name="demo">
+      </p>
+      <p>
+        Progrès : <progress value="70" max="100">70 %</progress>
+      </p>
+      <p>
+        <select name="select">
+          <option value="option1">Option 1</option>
+          <option value="option2" selected>Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+      </p>
+      <p>
+        <textarea name="textarea"
+                  rows="10" cols="50">Saisir un texte ici.</textarea>
+      </p>
+      <p>
+        <form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+            <!-- oninput utilise JavaScript, ce qu'on verra en plus détail en deux semaines -->
+          0<input type="range" name="b" value="50" />100 +
+          <input type="number" name="a" value="10" /> =
+          <output name="result"></output>
+        </form>
+      </p>
+      <p>
+        Page imbriquée :<br>
+        <iframe src="html-contenu-phrasé.html" width="300" height="300">
+          <p>Votre navigateur ne supporte pas
+          l'élément <code>&lt;iframe&gt;</code></p>
+        </iframe>
+      </p>
+      <p>
+        … etc.
+      </p>
+    </section>
+  </body>
+</html>

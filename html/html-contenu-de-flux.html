@@ -1,0 +1,82 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Contenu phrasé</title>
+  </head>
+  <body>
+    <p>Cette page illustre quelques éléments
+    de <a href="http://developers.whatwg.org/content-models.html#flow-content">
+    contenu de flux</a> en HTML.</p>
+    <section>
+      <h1>Paragraphes</h1>
+      <p>Les paragraphes sont délimités
+      par <code>&lt;p&gt;</code>.</p>
+      <p>Par exemple, ce paragraphe que vous êtes en train de lire est
+      contenu dans un pair de éléments
+      <code>&lt;p&gt;</code> … <code>&lt;/p&gt;</code>.</p>
+    </section>
+    <section>
+      <h1>Listes</h1>
+      <p>Les listes ordonnées sont créés avec
+      l'élément <code>&lt;ol&gt;</code> (pour « Ordered List »).
+        <ol>
+          <li>Item</li>
+          <li>Un autre item</li>
+          <li>Encore un autre item</li>
+        </ol>
+      </p>
+      <p>Les listes non ordonnées sont créés
+      avec <code>&lt;ul&gt;</code> (pour « Unordered List »).
+        <ul>
+          <li>Item</li>
+          <li>Un autre item</li>
+          <li>Encore un autre item</li>
+        </ul>
+      </p>
+      <p>Les listes peuvent être imbriquées.
+        <ul>
+          <li>Premier item</li>
+          <li>Deuxième item
+            <ol>
+              <li>Premier subitem</li>
+              <li>Deuxième subitem</li>
+              <li>Troisième subitem</li>
+            </ol>
+          </li> <!-- ceci ferme le deuxième item -->
+          <li>Troisième item</li>
+        </ul>
+      </p>
+      <p>Vu que les listes ne sont pas
+        du <a href="http://developers.whatwg.org/content-models.html#phrasing-content">contenu
+        phrasé</a>, elles ne peuvent pas apparaître à l'interieur d'un
+        élément <code>&lt;p&gt;</code>.  Pour le tester, ce paragraphe
+        inclut (incorrectement) une liste imbriquée. Inspectez la
+        hiérarchie résultante en utilisant
+        l'option <span class="ui">Inspect Element</span> du menu
+        contextuel.
+        <ul>
+          <li>Premier item</li>
+          <li>Deuxième item</li>
+        </ul>
+      </p>
+    </section>
+    <section>
+      <h1>Préformatage</h1>
+      <p>L'élément <code>&lt;pre&gt;</code> permet de <pre>
+           p
+            r
+             é
+              f
+               o
+                r
+                 m
+                  a
+                   t
+                    e
+                     r</pre> le texte.
+      </p>
+
+  </body>
+</html>
