@@ -1,2 +1,2 @@
 # LINFO1212
-Projet duc ours LINFO1212, 
+Projet du cours LINFO1212, 
