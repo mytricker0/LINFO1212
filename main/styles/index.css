@@ -1,6 +1,9 @@
 body {
    padding-top: 50px;
-   background-image: url("/main/images/lacLLN.jpg");
+   background-image: url("../images/lacLLN.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   /* background-position: center; */
 }
 
 .starter-template {
