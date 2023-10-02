@@ -9,3 +9,25 @@ body {
 .starter-template {
    text-align: center;
 }
+
+.login {
+   margin-left: 500px;
+   margin-top: 180px;
+   border: 0px solid #333; /* Style de la bordure du carré */
+   padding: 30px; /* Espace à l'intérieur du carré */
+   width: fit-content; /* Ajuste la largeur du carré en fonction du contenu */
+   background-color: white; /* Couleur de fond du carré */
+   display: inline-block;
+}
+
+.log_button {
+   width: 350px;
+   height: 50px; 
+   font-size: 18px;
+   background-color: lightgreen;
+   color: white;
+   border: 0 solid lightgreen
+
+}
+
+
