@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Page</title>
+    <title>Signup Page</title>
 </head>
 <!-- NAVBAR + background photo-->
 <html lang="en">
@@ -51,19 +51,20 @@
   </div>
 </nav>
 
-<!-- code pour le login/register-->
+<!-- signup code-->
 <body>
-    <form action="process_login.php" method="post" class="login">
-        <input type="text" id="username" name="username" required placeholder="Username" class="log"><br><br>
+    <form action="process_signup" method="post" class="login">
+        <input type="text" id="email" name="email" required placeholder="Email" class="log"><br><br>
+
+        <input type="text" id="username" name="username" required placeholder="Choose a Username" class="log"><br><br>
     
         <input type="password" id="password" name="password" required placeholder="Password" class="log"><br><br>
-    
-        <input type="submit" value="Login" class="log_button">
+
+        <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm Password" class="log"><br><br>
+
+        <input type="submit" value="Sign Up" class="log_button">
         <div class="signup">
-            <label for="account">Don't have an account? <a href="signup.html">Sign up</a></label>
+            <label for="account">Already have an account? <a href="login.html">Login</a></label>
         </div>
-        
     </form>
-    
 </body>
-</html>

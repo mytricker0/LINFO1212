@@ -4,6 +4,11 @@ body {
    background-repeat: no-repeat;
    background-size: cover;
    /* background-position: center; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   margin: 0;
 }
 
 .starter-template {
@@ -11,23 +16,26 @@ body {
 }
 
 .login {
-   margin-left: 500px;
-   margin-top: 180px;
    border: 0px solid #333; /* Style de la bordure du carré */
-   padding: 30px; /* Espace à l'intérieur du carré */
+   padding: 15px; /* Espace à l'intérieur du carré */
    width: fit-content; /* Ajuste la largeur du carré en fonction du contenu */
    background-color: white; /* Couleur de fond du carré */
-   display: inline-block;
 }
 
 .log_button {
-   width: 350px;
+   width: 250px;
    height: 50px; 
    font-size: 18px;
    background-color: lightgreen;
    color: white;
    border: 0 solid lightgreen
 
+}
+
+.log {
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 10px;
 }
 
 
