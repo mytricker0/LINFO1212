@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         const lon = feature.geometry.coordinates[0];
                         const resultItem = document.createElement('p');
                         resultItem.textContent = `${displayName}`;
+                        resultItem.addEventListener('click', function () {
+                            // Set the clicked suggestion as the input value
+                            addressInput.value = displayName;
+                            resultContainer.innerHTML = ''; // Clear results after selection
+                        });
                         resultContainer.appendChild(resultItem);
                     });
                 } else {
