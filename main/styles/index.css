@@ -4,11 +4,17 @@ body {
    background-repeat: no-repeat;
    background-size: cover;
    /* background-position: center; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   margin: 0;
 }
 
 .starter-template {
    text-align: center;
 }
+
 
 .container {
    display: flex;
