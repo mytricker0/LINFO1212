@@ -23,7 +23,7 @@
 .log_button {
    width: 100%;
    padding: 15px;
-   background: linear-gradient(to right, #21d4fd, #b721ff);
+   background: linear-gradient(to right, #cf1a1a, #2194ff);
    border: none;
    border-radius: 5px;
    font-size: 18px;
@@ -33,7 +33,7 @@
 
 /* Login button hover effect */
 .log_button:hover {
-   background: linear-gradient(to right, #21d4fd, #426951);
+   background: linear-gradient(to right, #31a365, #11e026);
 }
 
 /* Sign-up link styles */
