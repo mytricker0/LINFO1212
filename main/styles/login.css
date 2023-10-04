@@ -1,21 +1,52 @@
 .login {
-    border: 0px solid #b02929; /* Style de la bordure du carré */
-    padding: 15px; /* Espace à l'intérieur du carré */
-    width: fit-content; /* Ajuste la largeur du carré en fonction du contenu */
-    background-color: rgb(255, 255, 255); /* Couleur de fond du carré */
- }
- 
- .log_button {
-    width: 100%;
-    height: 100%; 
-    font-size: 18px;
-    background-color: lightgreen;
-    color: white;
-    border: 0 solid lightgreen
- 
- }
+   max-width: 1000%;
+   position: absolute;
+   margin: 0 auto;
+   padding: 20px;
+   background-color: rgba(255, 255, 255, 0.9);
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+   text-align: center;
+}
 
+/* Input field styles */
 .log {
-    width: 100%;
-    padding: 9px;
- }
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 16px;
+}
+
+/* Login button styles */
+.log_button {
+   width: 100%;
+   padding: 15px;
+   background: linear-gradient(to right, #21d4fd, #b721ff);
+   border: none;
+   border-radius: 5px;
+   font-size: 18px;
+   color: white;
+   cursor: pointer;
+}
+
+/* Login button hover effect */
+.log_button:hover {
+   background: linear-gradient(to right, #21d4fd, #426951);
+}
+
+/* Sign-up link styles */
+.signup {
+   margin-top: 15px;
+}
+
+.signup a {
+   text-decoration: none;
+   color: #007bff;
+   font-weight: bold;
+}
+
+.signup a:hover {
+   text-decoration: underline;
+}
