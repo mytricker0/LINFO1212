@@ -1,11 +1,11 @@
 .login {
-    border: 0px solid #333; /* Style de la bordure du carré */
+    border: 0px solid #b02929; /* Style de la bordure du carré */
     padding: 15px; /* Espace à l'intérieur du carré */
     width: fit-content; /* Ajuste la largeur du carré en fonction du contenu */
-    background-color: white; /* Couleur de fond du carré */
+    background-color: rgb(255, 255, 255); /* Couleur de fond du carré */
  }
  
- .log_button {
+.log_button {
     width: 50%;
     height: 50%; 
     font-size: 18px;
@@ -15,7 +15,7 @@
  
  }
 
- .log {
+.log {
     width: 100%;
     padding: 9px;
  }

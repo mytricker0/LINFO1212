@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/index.css">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -53,12 +54,13 @@
 
 <!-- code pour le login/register-->
 <body>
-    <form action="process_login.php" method="post" class="login">
+    <form method="post" class="login">
         <input type="text" id="username" name="username" required placeholder="Username" class="log"><br><br>
     
         <input type="password" id="password" name="password" required placeholder="Password" class="log"><br><br>
     
         <input type="submit" value="Login" class="log_button">
+
         <div class="signup">
             <label for="account">Don't have an account? <a href="signup.html">Sign up</a></label>
         </div>
