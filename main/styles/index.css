@@ -75,6 +75,7 @@ button[type="submit"] {
 
 /* Style the result container */
 #result {
+   display: none; /* Initially hide the result container */
    background-color: white;
    border: 1px solid #ccc;
    border-radius: 5px;

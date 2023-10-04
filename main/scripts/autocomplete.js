@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(apiUrl, requestOptions)
             .then(response => response.json())
             .then(result => {
-                // Display the autocomplete results
-                resultContainer.innerHTML = '';
+                // Display the autocomplete results or hide the container if no results
                 if (result.features && result.features.length > 0) {
+                    resultContainer.innerHTML = '';
                     result.features.forEach(feature => {
                         const displayName = feature.properties.formatted;
                         const lat = feature.geometry.coordinates[1];
@@ -26,12 +26,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         resultItem.addEventListener('click', function () {
                             // Set the clicked suggestion as the input value
                             addressInput.value = displayName;
-                            resultContainer.innerHTML = ''; // Clear results after selection
+                            resultContainer.style.display = 'none'; // Hide the container after selection
                         });
                         resultContainer.appendChild(resultItem);
                     });
+                    resultContainer.style.display = 'block'; // Show the container
                 } else {
-                    resultContainer.textContent = 'No results found.';
+                    resultContainer.innerHTML = ''; // Clear any previous results
+                    resultContainer.style.display = 'none'; // Hide the container if no results
                 }
             })
             .catch(error => console.log('error', error));
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
             fetchAutocompleteResults(query);
         } else {
             resultContainer.innerHTML = ''; // Clear results if input is less than 3 characters
+            resultContainer.style.display = 'none'; // Hide the container if input is less than 3 characters
         }
     });
 });
