@@ -23,7 +23,7 @@ body {
    justify-content: center;
    height: 100vh; /* Makes the container take the full viewport height */
    position: fixed; /* Keeps the container fixed while scrolling */
-   width: 100%;
+   width: 50%;
    background-color: #f0f0f0; /* Background color for the whole page */
 }
 
