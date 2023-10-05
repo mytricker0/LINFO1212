@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Login Page</title>
-</head>
-<!-- NAVBAR + background photo-->
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My LLLN</title>
+    <title>Login Page</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -16,45 +11,12 @@
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/login.css">
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <a class="navbar-brand" href="index.html">FIX LLN</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Contact
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Sys admin</a>
-          <a class="dropdown-item" href="#">Editor</a>
-        </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-
-    <li class="nav-item">
-      <a class="nav-link" href="/main/html/login.html">Login/sign up</a>
-    </li>
-
-  </div>
-</nav>
-
-<!-- code pour le login/register-->
+    <script src="../scripts/getnavbar.js"></script>
+</head>
 <body>
+   
+    <div id="navbar-container"></div> <!-- This is where the navbar will be fetched -->
+
     <form method="post" class="login">
         <input type="text" id="username" name="username" required placeholder="Username" class="log"><br><br>
     
@@ -65,8 +27,6 @@
         <div class="signup">
             <label for="account">Don't have an account? <a href="signup.html">Sign up</a></label>
         </div>
-        
     </form>
-    
 </body>
 </html>
