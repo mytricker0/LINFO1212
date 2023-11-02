@@ -1,14 +1,23 @@
 {
   "name": "linfo1212",
   "version": "1.0.0",
-  "description": "projet FixMyLln",
+  "description": "proj en app sinf",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mytricker0/LINFO1212.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mytricker0/LINFO1212/issues"
+  },
+  "homepage": "https://github.com/mytricker0/LINFO1212#readme",
   "dependencies": {
+    "ejs": "^3.1.9",
     "express": "^4.18.2"
   }
 }
