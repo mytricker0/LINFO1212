@@ -1,7 +1,14 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+const bcrypt = require('bcrypt');
 
+
+const app = express();
+
+const port = 3000;
+const LoginSingupCollection = require('./mongodb');
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.set('views', './static/pages');
 
@@ -11,7 +18,7 @@ function serveDirectory(directoryName) {
 }
 
 // Serve multiple static directories
-serveDirectory('static');
+serveDirectory('static'); 
 serveDirectory('scripts');
 serveDirectory('images');
 
@@ -29,6 +36,69 @@ app.get('/signup', (req, res) => {
 
 app.get('/about', (req, res) => {
   res.render('about.ejs');
+});
+
+
+
+app.post('/signup', async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+
+    // Generate a salt
+    const saltRounds = 10;
+    const salt = await bcrypt.genSalt(saltRounds);
+    // console.log(salt); ex : 2b$10$j8YTROunl67T4o34cq/3wO
+    // Hash the password with the generated salt
+    const hashedPassword = await bcrypt.hash(password, salt);
+    // console.log(hashedPassword); ex : $2b$10$j8YTROunl67T4o34cq/3wOOIWIA98DMdBk9hYQy5jOyGIll0ibT8O
+    const data = {
+      username: username,
+      email: email,
+      password: hashedPassword,
+    };
+
+    // Save the user with the hashed password
+    await LoginSingupCollection.create(data);
+
+    res.render('index.ejs');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
+
+app.post('/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    // Find the user with the provided username
+    const user = await LoginSingupCollection.findOne({ username });
+
+    if (user) {
+      // Compare the entered password with the hashed password stored in the database
+      const passwordMatch = await bcrypt.compare(password, user.password);
+       
+      // this method protects agains rainbow table attacks
+
+      if (passwordMatch) {
+        // Passwords match, user is authenticated
+        res.render('about.ejs');
+        console.log("user is authenticated");
+      } else {
+        // Incorrect password
+        res.render('login.ejs');
+        console.log("Incorrect password");
+      }
+    } else {
+      // User not found
+      res.render('login.ejs');
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 
