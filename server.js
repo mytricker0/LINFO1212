@@ -43,7 +43,7 @@ serveDirectory('scripts');
 serveDirectory('images');
 
 app.get('/', (req, res) => {
-  res.render('index.ejs');
+  res.render(' index.ejs');
   
 });
 

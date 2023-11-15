@@ -30,11 +30,36 @@
     
         <input type="password" id="password" name="password" required placeholder="Password" class="log"><br><br>
 
-        <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm Password" class="log"><br><br>
+        <input type="password" id="confirmPassword" name="confirm-password" required placeholder="Confirm Password" class="log"><br><br>
 
-        <input type="submit" value="Sign Up" class="log_button">
+        <p id="message"></p>
+
+        <input type="submit" onclick="checkPassword()" value="Sign Up" class="log_button">
         <div class="signup">
             <label for="account">Already have an account? <a href="/login">Login</a></label>
         </div>
     </form>
 </body>
+
+<script>
+    function checkPassword(){
+        let password = document.getElementById
+        ("password").value;
+        let confirmPassword = document.getElementById
+        ("confirmPassword").value;
+        console.log(password,confirmPassword);
+        let message = document.getElementById
+        ("message");
+
+        if(password.length != 0){
+            if(password == confirmPassword){
+                message.textContent = "Passwords match";
+                message.style.backgroundColor = "#3ae374"
+            }
+            else{
+                message.textContent = "Passwords don't match";
+                message.style.backgroundColor = "#ff4d4d";
+            }
+        }
+    }
+</script>
