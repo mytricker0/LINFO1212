@@ -1,14 +1,34 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const session = require('express-session');
+const MongoDBSession = require("connect-mongodb-session")(session);
+const isAuth = require("./server/is-auth");
 
 
+const cookieParser = require('cookie-parser');
 const app = express();
 
 const port = 3000;
-const LoginSingupCollection = require('./mongodb');
+const LoginSingupCollection = require('./server/mongodb');
+
+const store = new MongoDBSession({
+  uri: 'mongodb://localhost:27017/LoginSingup',
+  collection: 'mySessions'
+});
 
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.use(session({
+  secret: 'key that signs cookies',
+  resave: false,
+  saveUninitialized: false, // later set to true
+  cookie: { secure: false },
+  maxAge: 10 * 60 * 60 * 24, // 10 days
+  store: store
+}));
+
 app.set('view engine', 'ejs');
 app.set('views', './static/pages');
 
@@ -24,9 +44,11 @@ serveDirectory('images');
 
 app.get('/', (req, res) => {
   res.render('index.ejs');
+  
 });
 
 app.get('/login', (req, res) => {
+  
   res.render('login.ejs');
 });
 
@@ -38,6 +60,17 @@ app.get('/about', (req, res) => {
   res.render('about.ejs');
 });
 
+app.get('/incident', isAuth, (req, res) => {
+  // Access the entered address from the query parameters
+  const address = req.query.address;
+
+  // Assuming you have some data to pass, replace this with your actual data
+  const incidentData = {
+    location: address,
+  };
+
+  res.render('addIncident.ejs', { incidentData });
+});
 
 
 app.post('/signup', async (req, res) => {
@@ -60,7 +93,7 @@ app.post('/signup', async (req, res) => {
     // Save the user with the hashed password
     await LoginSingupCollection.create(data);
 
-    res.render('index.ejs');
+    res.render('login.ejs');
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
@@ -83,13 +116,14 @@ app.post('/login', async (req, res) => {
       // this method protects agains rainbow table attacks
 
       if (passwordMatch) {
+        req.session.isAuth = true;
         // Passwords match, user is authenticated
-        res.render('about.ejs');
         console.log("user is authenticated");
+        res.render('about.ejs');
       } else {
         // Incorrect password
-        res.render('login.ejs');
         console.log("Incorrect password");
+        res.render('login.ejs');
       }
     } else {
       // User not found

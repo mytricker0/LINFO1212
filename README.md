@@ -5,9 +5,9 @@ Groupe A01
 
 Participants:
 ```
+Preda Patrick
 Joye Tanguy
 Kalish Alaric
-Preda Patrick
 ```
 Projet préparatoire: FixLLN
 
