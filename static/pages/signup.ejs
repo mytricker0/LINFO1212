@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/styles/login.css">
     <link rel="stylesheet" href="/static/styles/index.css">
+    <script src="/scripts/verifypasswd.js"> </script>
     
 
 
@@ -30,36 +31,14 @@
     
         <input type="password" id="password" name="password" required placeholder="Password" class="log"><br><br>
 
-        <input type="password" id="confirmPassword" name="confirm-password" required placeholder="Confirm Password" class="log"><br><br>
+        <input type="password" id="confirmPassword" name="confirm-password" oninput="checkPassword()" required placeholder="Confirm Password" class="log"><br><br>
 
         <p id="message"></p>
 
-        <input type="submit" onclick="checkPassword()" value="Sign Up" class="log_button">
+        <input type="submit" value="Sign Up" class="log_button">
         <div class="signup">
             <label for="account">Already have an account? <a href="/login">Login</a></label>
         </div>
     </form>
 </body>
 
-<script>
-    function checkPassword(){
-        let password = document.getElementById
-        ("password").value;
-        let confirmPassword = document.getElementById
-        ("confirmPassword").value;
-        console.log(password,confirmPassword);
-        let message = document.getElementById
-        ("message");
-
-        if(password.length != 0){
-            if(password == confirmPassword){
-                message.textContent = "Passwords match";
-                message.style.backgroundColor = "#3ae374"
-            }
-            else{
-                message.textContent = "Passwords don't match";
-                message.style.backgroundColor = "#ff4d4d";
-            }
-        }
-    }
-</script>
