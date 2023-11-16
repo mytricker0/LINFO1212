@@ -1,0 +1,46 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #40e0d0;
+}
+
+.team {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #00ced1;
+    padding:0%;
+    margin-top: 4%;
+}
+
+.team div {
+    text-align: center;
+    margin: 2%;
+    width:28%;
+}
+
+.team img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+.bottom {
+    background-color: #000; /* Background color for the bottom section */
+    color: #fff; /* Text color in the bottom section */
+    text-align: center;
+    padding: 6%;
+    margin-top: 0%;
+    font-size: larger;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
