@@ -32,6 +32,12 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.set('views', './static/pages');
 
+
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isAuth || false;
+  next();
+});
+
 // Function to serve static files for different directories
 function serveDirectory(directoryName) {
   app.use(`/${directoryName}`, express.static(__dirname + `/${directoryName}`));
@@ -47,18 +53,19 @@ app.get('/', (req, res) => {
   
 });
 
-app.get('/login', (req, res) => {
+app.get('/login', async (req, res) => {
   
   res.render('login.ejs');
 });
 
-app.get('/signup', (req, res) => {
+app.get('/signup', async (req, res) => {
   res.render('signup.ejs');
 });
 
-app.get('/about', (req, res) => {
+app.get('/about', async (req, res) => {
   res.render('about.ejs');
 });
+
 
 app.get('/incident', isAuth, (req, res) => {
   // Access the entered address from the query parameters
