@@ -58,6 +58,19 @@ app.get('/login', async (req, res) => {
   res.render('login.ejs');
 });
 
+app.get('/logout', (req, res) => {
+  // Destroy the session
+  req.session.destroy((err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      // Redirect to the login page after destroying the session
+      res.redirect('/login');
+    }
+  });
+});
+
 app.get('/signup', async (req, res) => {
   res.render('signup.ejs');
 });
@@ -65,6 +78,12 @@ app.get('/signup', async (req, res) => {
 app.get('/about', async (req, res) => {
   res.render('about.ejs');
 });
+
+app.get('/test', async (req, res) => {
+  res.render('test.ejs');
+});
+
+
 
 
 app.get('/incident', isAuth, (req, res) => {
@@ -126,7 +145,7 @@ app.post('/login', async (req, res) => {
         req.session.isAuth = true;
         // Passwords match, user is authenticated
         console.log("user is authenticated");
-        res.render('about.ejs');
+        res.redirect('/about');
       } else {
         // Incorrect password
         console.log("Incorrect password");
