@@ -9,3 +9,26 @@
     padding: 1px;
     cursor: pointer;
 }
+
+/* Custom CSS for the styled login/signup link */
+.login-signup-link {
+    margin-left: 10px; /* Add some margin for spacing */
+}
+
+.login-signup-link a {
+    padding: 8px 20px;
+    border-radius: 5px;
+    background-color: #007bff; /* Bootstrap's primary color */
+    color: #fff; /* White text */
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.login-signup-link a:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Add padding to the navbar */
+.navbar {
+    padding: 10px; /* Adjust as needed */
+}
