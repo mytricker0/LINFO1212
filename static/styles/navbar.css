@@ -1,0 +1,11 @@
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 1000%;
+    background-color: rgb(37, 157, 69);
+    margin-right: 10px;
+    
+    
+    padding: 1px;
+    cursor: pointer;
+}
