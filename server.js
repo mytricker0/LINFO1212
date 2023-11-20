@@ -1,18 +1,18 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 const session = require('express-session');
 const MongoDBSession = require("connect-mongodb-session")(session);
 const isAuth = require("./server/is-auth");
+const { LoginSingupCollection, IncidentCollection } = require('./server/mongodb');
 
+const bcrypt = require('bcrypt');
 
 const cookieParser = require('cookie-parser');
 const app = express();
 
 const port = 3000;
-const LoginSingupCollection = require('./server/mongodb');
 
 const store = new MongoDBSession({
-  uri: 'mongodb://localhost:27017/LoginSingup',
+  uri: 'mongodb://localhost:27017/LINFO1212',
   collection: 'mySessions'
 });
 
@@ -83,6 +83,12 @@ app.get('/test', async (req, res) => {
   res.render('test.ejs');
 });
 
+app.get('/profile', async (req, res) => {
+  res.render('profile.ejs');
+});
+
+
+
 
 
 
@@ -98,6 +104,72 @@ app.get('/incident', isAuth, (req, res) => {
   res.render('addIncident.ejs', { incidentData });
 });
 
+
+
+app.get('/getUserIncidents', isAuth, async (req, res) => {
+  try {
+    console.log("getUserIncidents");
+    const username = req.session.user;
+    const incidents = await IncidentCollection.find({ username });
+    res.json(incidents);
+  } catch (error) {
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
+app.get('/getallIncidents', async (req, res) => {
+  try {
+    console.log("getAllIncidents");
+    // If you want to fetch all incidents regardless of user, remove the { username } filter
+    const incidents = await IncidentCollection.find({});
+    res.json(incidents);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.delete('/deleteIncident/:incidentId', isAuth, async (req, res) => {
+  try {
+    const { incidentId } = req.params;
+    const result = await IncidentCollection.deleteOne({ _id: incidentId });
+    if (result.deletedCount === 1) {
+      res.json({ success: true });
+    } else {
+      res.json({ success: false, message: 'No incident found with that ID.' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
+
+
+app.post('/saveIncident/:incidentId', isAuth, async (req, res) => {
+  try {
+      const { incidentId } = req.params;
+      const { incidentType, location, description } = req.body;
+
+      // You may want to add validation here to make sure the content is safe to save
+
+      const result = await IncidentCollection.updateOne(
+          { _id: incidentId },
+          { $set: { incidentType, location, description } }
+      );
+
+      if (result.modifiedCount === 1) {
+          res.json({ success: true });
+      } else {
+          res.json({ success: false });
+      }
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+  }
+});
 
 app.post('/signup', async (req, res) => {
   try {
@@ -143,6 +215,7 @@ app.post('/login', async (req, res) => {
 
       if (passwordMatch) {
         req.session.isAuth = true;
+        req.session.user = username;
         // Passwords match, user is authenticated
         console.log("user is authenticated");
         res.redirect('/about');
@@ -161,7 +234,26 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.post('/addIncident', isAuth, async (req, res) => {
+  try {
+    const { incidentType, location, description } = req.body;
+    const username = req.session.user; // Assuming the username is stored in the session
 
+    const newIncident = {
+      username,
+      incidentType,
+      location,
+      description
+    };
+
+    await IncidentCollection.create(newIncident);
+
+    res.redirect('/profile'); // Redirect to a success page or back to the form
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

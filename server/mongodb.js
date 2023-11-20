@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/LoginSingup')
+mongoose.connect('mongodb://localhost:27017/LINFO1212')
 .then (() => console.log('mongodb connection successful'))
 .catch((err) => console.log("failled to print ",err));
 
@@ -10,5 +10,16 @@ const LoginSchema = new mongoose.Schema({
 
 })
 
+const IncidentSchema = new mongoose.Schema({
+    username: { type: String, required: true },
+    incidentType: { type: String, required: true },
+    location: { type: String, required: true },
+    description: { type: String, required: true }
+  });
+
+
+
 const LoginSingupCollection = new mongoose.model('LoginCollection', LoginSchema)
-module.exports = LoginSingupCollection
+const IncidentCollection = new mongoose.model('Incident', IncidentSchema);
+
+module.exports = { LoginSingupCollection, IncidentCollection };

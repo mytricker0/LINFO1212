@@ -1,0 +1,52 @@
+#incidents-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.incident-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    flex: 0 1 calc(33% - 20px);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.incident-card:hover {
+    transform: translateY(-5px);
+}
+
+.editable {
+    border: 1px dashed #03A9F4;
+    padding: 5px;
+    margin: -5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-right: 10px; /* Add space between buttons */
+}
+
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 800px) {
+    .incident-card {
+        flex: 0 1 calc(50% - 20px); /* Show 2 cards per row */
+    }
+}
+
+@media (max-width: 600px) {
+    .incident-card {
+        flex: 0 1 100%; /* Stack cards on smaller screens */
+    }
+}
