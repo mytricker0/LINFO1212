@@ -15,6 +15,9 @@
 <body>
     <%- include('navbar.ejs') %> <!-- This is where the navbar will be fetched -->
    
+    <% if (typeof message !== 'undefined') { %>
+        <script>alert('<%- message %>');</script>
+    <% } %>
 
     <form method="post" class="login" action="/login">
         <input type="text" id="username" name="username" required placeholder="Username" class="log"><br><br>

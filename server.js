@@ -218,11 +218,12 @@ app.post('/login', async (req, res) => {
         req.session.user = username;
         // Passwords match, user is authenticated
         console.log("user is authenticated");
+        
         res.redirect('/about');
       } else {
         // Incorrect password
         console.log("Incorrect password");
-        res.render('login.ejs');
+        res.render('login.ejs', { message: 'Incorrect password' });
       }
     } else {
       // User not found
