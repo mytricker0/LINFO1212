@@ -1,5 +1,6 @@
 module.exports = (req, res, next) => {
-    if (req.session.isAuth) {
+    res.locals.isAuthenticated = req.session.isAuth || false;
+    if (res.locals.isAuthenticated) {
       next();
     } else {
       req.session.error = "You have to Login first";

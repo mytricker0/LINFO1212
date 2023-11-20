@@ -59,6 +59,7 @@ button[type="submit"] {
    border-radius: 5px;
    padding: 10px;
    width: 300px;
+   cursor: pointer;
 }
 
 #result p {

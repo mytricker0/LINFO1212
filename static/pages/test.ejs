@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    
+
+</head>
+<body>
+
+    <%- include('navbar.ejs') %> 
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+            body {
+        font-family: Arial, sans-serif;
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        }
+
+        .login-container {
+        width: 300px;
+        padding: 20px;
+        background: #222;
+        border-radius: 5px;
+        }
+
+        .login-form h2 {
+        color: #aaa;
+        margin-bottom: 20px;
+        }
+
+        .input-group {
+        margin-bottom: 10px;
+        }
+
+        .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        }
+
+        .input-group input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        }
+
+        .input-group button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f00;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        }
+
+        .input-group a {
+        color: #f00;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        }
+
+        .input-group a:hover {
+        text-decoration: underline;
+        }
+
+    </style>
+    </head>
+    <body>
+    
+    <div class="login-container">
+      <form class="login-form">
+        <h2>Login to your account</h2>
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username">
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password">
+        </div>
+        <div class="input-group">
+          <button type="submit">LOG IN</button>
+          <a href="#">Forgotten password?</a>
+        </div>
+      </form>
+    </div>
+    </body>
+    </html>
+</body>
+</html>

@@ -36,6 +36,10 @@
 .log_button:hover {
    background: linear-gradient(to right, #31a365, #11e026);
 }
+.log_button[disabled]:hover {
+   background: linear-gradient(to right, #ff4d4d, #ff0000);
+   cursor: not-allowed; /* Change cursor to not-allowed */
+}
 
 /* Sign-up link styles */
 .signup {

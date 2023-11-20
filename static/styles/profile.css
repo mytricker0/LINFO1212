@@ -1,0 +1,64 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-image: url("/images/lacLLN.jpg");
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background: rgba(255,255,255,0.9); /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.user-info p {
+    background: #e9ecef;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.user-info p strong {
+    margin-right: 5px;
+}
+
+.user-incidents h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+

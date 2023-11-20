@@ -6,17 +6,18 @@
     <title>Login Page</title>
     <link rel="icon" type="image/x-icon" href="/main/images/Blason_ville_OLL.png">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
     <link rel="stylesheet" href="/static/styles/login.css">
     <link rel="stylesheet" href="/static/styles/index.css">
     
     
 </head>
 <body>
-   
     <%- include('navbar.ejs') %> <!-- This is where the navbar will be fetched -->
+   
+    <% if (typeof message !== 'undefined') { %>
+        <script>alert('<%- message %>');</script>
+    <% } %>
 
     <form method="post" class="login" action="/login">
         <input type="text" id="username" name="username" required placeholder="Username" class="log"><br><br>

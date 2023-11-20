@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/static/styles/profile.css"> <!-- Link your CSS here -->
+    <link rel="stylesheet" href="/static/styles/incidents.css">
+    
+    
+    </head>
+<body>
+
+    <%- include('navbar.ejs') %>
+
+
+    <main>
+        <div class="profile-container">
+            <h1>User Profile</h1>
+            
+            <div class="user-info">
+                <p><strong>Username:</strong> <!-- User's username --></p>
+                <p><strong>Email:</strong> <!-- User's email --></p>
+                <!-- Add more user details if necessary -->
+            </div>
+
+            <div class="user-incidents">
+                <h2>Your reported Incidents</h2>
+                <div id="incidents-list">
+                    <!-- Incident cards will be appended here by JavaScript -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+    <script src="/scripts/profileIncident.js"> </script>
+    </body>
+</html>
