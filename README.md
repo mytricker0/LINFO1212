@@ -36,6 +36,3 @@ sudo systemctl enable mongod.service
 # Pour windows/Alaric
 rm -rf node_modules/
 npm install
-
-
-oeiurfrfvheoqie
