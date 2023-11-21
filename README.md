@@ -20,15 +20,13 @@ node server.js
 ```
 
 `npm i mongoose`
-https://www.mongodb.com/try/download/community
-https://www.mongodb.com/try/download/shell
-https://www.mongodb.com/try/download/compass
 
 https://www.youtube.com/watch?v=V8dYGNfHjfk&list=WL&index=75
 https://www.youtube.com/watch?v=HSIh8UswVVY
 
-if 
-`sudo service mongod start` does not work just do `sudo rm -rf /tmp/mongodb-27017.sock` and try again
+if  \
+```sudo service mongod start && sudo systemctl start mongod.service``` \
+does not work just do `sudo rm -rf /tmp/mongodb-27017.sock` and try again
 sudo systemctl enable mongod.service
 
 
