@@ -2,14 +2,18 @@ const express = require('express');
 const session = require('express-session');
 const MongoDBSession = require("connect-mongodb-session")(session);
 const isAuth = require("./server/is-auth");
+const fs = require('fs');
+const https = require('https');
 const { LoginSingupCollection, IncidentCollection } = require('./server/mongodb');
 
 const bcrypt = require('bcrypt');
 
 const cookieParser = require('cookie-parser');
 const app = express();
-
 const port = 3000;
+
+var privateKey = fs.readFileSync('./key.pem' );
+var certificate = fs.readFileSync('./cert.pem' );
 
 const store = new MongoDBSession({
   uri: 'mongodb://localhost:27017/LINFO1212',
@@ -256,6 +260,13 @@ app.post('/addIncident', isAuth, async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+
+const server = https.createServer({
+  key: privateKey,
+  cert: certificate,
+  passphrase: 'ingi'
+}, app);
+
+server.listen(port, () => {
+  console.log(`Example app listening at https://localhost:${port}`);
 });
