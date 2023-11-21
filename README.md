@@ -11,7 +11,7 @@ Kalish Alaric
 ```
 Projet préparatoire: FixLLN
 
-date due: 5/10/2023
+date due: 24/11/2023
 
 <!-- make a title woth the name: Launch -->
 # How to launch
@@ -30,3 +30,9 @@ https://www.youtube.com/watch?v=HSIh8UswVVY
 if 
 `sudo service mongod start` does not work just do `sudo rm -rf /tmp/mongodb-27017.sock` and try again
 sudo systemctl enable mongod.service
+
+
+
+# Pour windows/Alaric
+rm -rf node_modules/
+npm install
