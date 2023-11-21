@@ -124,7 +124,7 @@ app.get('/getUserIncidents', isAuth, async (req, res) => {
 
 app.get('/getallIncidents', async (req, res) => {
   try {
-    console.log("getAllIncidents");
+    console.log("getAllIncidents"); 
     // If you want to fetch all incidents regardless of user, remove the { username } filter
     const incidents = await IncidentCollection.find({});
     res.json(incidents);
