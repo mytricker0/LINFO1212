@@ -1,30 +1,28 @@
 body {
-   padding-top: 50px;
+   padding-top: 60px;
    background-image: url("/images/lacLLN.jpg");
    background-repeat: no-repeat;
    background-size: cover;
-   /* background-position: center; */
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 100vh;
    margin: 0;
+   /* Removed height: 100vh; */
 }
 
 .starter-template {
    text-align: center;
+   
 }
-
-
 .container {
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   height: 100vh; /* Makes the container take the full viewport height */
-   position: fixed; /* Keeps the container fixed while scrolling */
+   min-height: 100vh; /* Changed from height to min-height */
+   position: relative; /* Changed from fixed to relative */
    width: 50%;
-   background-color: #f0f0f0; /* Background color for the whole page */
+   background: rgba(255,255,255,1); /* to align with profile page */   
 }
 
 /* Style the form */

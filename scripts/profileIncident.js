@@ -5,6 +5,7 @@ function makeEditable(element) {
     element.contentEditable = true;
     element.classList.add('editable');
 }
+
 function deleteIncident(incidentId, cardElement) {
     fetch(`/deleteIncident/${incidentId}`, {
         method: 'DELETE'
@@ -73,8 +74,10 @@ function fetchAndDisplayIncidents(endpoint) {
             locationElement.textContent = incident.location;
             descriptionElement.textContent = incident.description;
 
+            
             const editButton = document.createElement('button');
             editButton.textContent = 'Edit';
+            editButton.classList.add('edit-button');
             editButton.onclick = function() {
                 makeEditable(typeElement);
                 makeEditable(locationElement);
@@ -87,6 +90,7 @@ function fetchAndDisplayIncidents(endpoint) {
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('delete-button');
             deleteButton.onclick = function() {
                 if (confirm('Are you sure you want to delete this incident?')) {
                     deleteIncident(incident._id, card);
