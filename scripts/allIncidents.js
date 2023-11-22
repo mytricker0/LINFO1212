@@ -26,3 +26,7 @@ function fetchAndDisplayIncidents(endpoint) {
 document.addEventListener('DOMContentLoaded', function() {
     fetchAndDisplayIncidents('/getallIncidents');
 });
+
+window.onload = function() { //pour que la page se recharge en haut
+    window.scrollTo(0, 0);
+  }

@@ -8,14 +8,20 @@ function checkPassword() {
         if (password === confirmPassword) {
             message.textContent = "Passwords match";
             message.style.backgroundColor = "#3ae374";
+            message.style.borderRadius = "5px";
+            message.style.paddingLeft = "2px";
             submitButton.disabled = false;
             return true;
         } else {
             message.textContent = "Passwords don't match";
             message.style.backgroundColor = "#ff4d4d";
+            message.style.borderRadius = "5px";
+            message.style.paddingLeft = "2px";
             submitButton.disabled = true;
             return false;
         }
+        
+          
     }
 
     // If the password is empty, reset the message and enable the submit button

@@ -2,14 +2,18 @@ const express = require('express');
 const session = require('express-session');
 const MongoDBSession = require("connect-mongodb-session")(session);
 const isAuth = require("./server/is-auth");
+const fs = require('fs');
+const https = require('https');
 const { LoginSingupCollection, IncidentCollection } = require('./server/mongodb');
 
 const bcrypt = require('bcrypt');
 
 const cookieParser = require('cookie-parser');
 const app = express();
-
 const port = 3000;
+
+var privateKey = fs.readFileSync('./key.pem' );
+var certificate = fs.readFileSync('./cert.pem' );
 
 const store = new MongoDBSession({
   uri: 'mongodb://localhost:27017/LINFO1212',
@@ -83,8 +87,23 @@ app.get('/test', async (req, res) => {
   res.render('test.ejs');
 });
 
-app.get('/profile', async (req, res) => {
-  res.render('profile.ejs');
+app.get('/profile',isAuth, async (req, res) => {
+  // Retrieve user details from the session or database
+  try {
+    // Find the user with the provided username stored in session
+    const user = await LoginSingupCollection.findOne({ username: req.session.user });
+
+    if (user) {
+      // Render the profile page with user details
+      res.render('profile.ejs', { username: user.username, email: user.email });
+    } else {
+      // Handle the case where the user is not found
+      res.status(404).send('User not found');
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 
@@ -120,7 +139,7 @@ app.get('/getUserIncidents', isAuth, async (req, res) => {
 
 app.get('/getallIncidents', async (req, res) => {
   try {
-    console.log("getAllIncidents");
+    console.log("getAllIncidents"); 
     // If you want to fetch all incidents regardless of user, remove the { username } filter
     const incidents = await IncidentCollection.find({});
     res.json(incidents);
@@ -238,7 +257,7 @@ app.post('/login', async (req, res) => {
 app.post('/addIncident', isAuth, async (req, res) => {
   try {
     const { incidentType, location, description } = req.body;
-    const username = req.session.user; // Assuming the username is stored in the session
+    const username = req.session.user; 
 
     const newIncident = {
       username,
@@ -256,6 +275,13 @@ app.post('/addIncident', isAuth, async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+
+const server = https.createServer({
+  key: privateKey,
+  cert: certificate,
+  passphrase: 'ingi'
+}, app);
+
+server.listen(port, () => {
+  console.log(`Example app listening at https://localhost:${port}`);
 });

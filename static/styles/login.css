@@ -1,18 +1,18 @@
 .login {
    max-width: 1000%;
-   position: absolute;
+   position: relative;
    margin: 0 auto;
    padding: 20px;
    background-color: rgba(255, 255, 255, 0.9);
    border-radius: 10px;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-   text-align: center;
+   margin-top: 15%;
 }
 
 /* Input field styles */
 .log {
    width: 100%;
-   padding: 10px;
+   padding: 10px;;
    margin-bottom: 10px;
    border: 1px solid #ccc;
    border-radius: 5px;

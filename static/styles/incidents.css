@@ -19,9 +19,9 @@
 }
 
 .editable {
-    border: 1px dashed #03A9F4;
+    border: 1px dashed #333;
     padding: 5px;
-    margin: -5px;
+    margin: 1px;
     border-radius: 5px;
     outline: none;
 }
@@ -36,7 +36,23 @@ button {
     margin-right: 10px; /* Add space between buttons */
 }
 
+button.edit-button {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #333;
+    background-color: #e9ecef; /* Change background color for edit button */
+    color: #333; /* Change text color for edit button */
+}
 
+button.delete-button {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+    background-color: #e9ecef; /* Change background color for delete button */
+    color: #333; /* Change text color for delete button */
+}
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 800px) {
