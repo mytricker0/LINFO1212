@@ -87,8 +87,23 @@ app.get('/test', async (req, res) => {
   res.render('test.ejs');
 });
 
-app.get('/profile', async (req, res) => {
-  res.render('profile.ejs');
+app.get('/profile',isAuth, async (req, res) => {
+  // Retrieve user details from the session or database
+  try {
+    // Find the user with the provided username stored in session
+    const user = await LoginSingupCollection.findOne({ username: req.session.user });
+
+    if (user) {
+      // Render the profile page with user details
+      res.render('profile.ejs', { username: user.username, email: user.email });
+    } else {
+      // Handle the case where the user is not found
+      res.status(404).send('User not found');
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 
@@ -242,7 +257,7 @@ app.post('/login', async (req, res) => {
 app.post('/addIncident', isAuth, async (req, res) => {
   try {
     const { incidentType, location, description } = req.body;
-    const username = req.session.user; // Assuming the username is stored in the session
+    const username = req.session.user; 
 
     const newIncident = {
       username,
