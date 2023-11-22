@@ -13,24 +13,24 @@ Projet préparatoire: FixLLN
 
 date due: 24/11/2023
 
-<!-- make a title woth the name: Launch -->
+
 # How to launch
 ```
+npm install
 node server.js
 ```
 
-`npm i mongoose`
 
-https://www.youtube.com/watch?v=V8dYGNfHjfk&list=WL&index=75
-https://www.youtube.com/watch?v=HSIh8UswVVY
-
-if  \
-```sudo service mongod start && sudo systemctl start mongod.service``` \
-does not work just do `sudo rm -rf /tmp/mongodb-27017.sock` and try again
+# troubleshooting 
+```
+sudo rm -rf /tmp/mongodb-27017.sock
+sudo systemctl start mongod.service
 sudo systemctl enable mongod.service
-
-
-
-# Pour windows/Alaric
+sudo service mongod start
 rm -rf node_modules/
 npm install
+
+```
+
+
+
