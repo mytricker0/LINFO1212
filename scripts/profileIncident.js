@@ -1,19 +1,17 @@
-// profileIncident.js
 
-// Function to create an editable field
-function makeEditable(element) {
+function makeEditable(element) { 
     element.contentEditable = true;
     element.classList.add('editable');
 }
 
-function deleteIncident(incidentId, cardElement) {
+function deleteIncident(incidentId, cardElement) { // en envoie une requete au server.js pour supprimer l'incident
     fetch(`/deleteIncident/${incidentId}`, {
         method: 'DELETE'
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Remove the card from the DOM
+            
             cardElement.remove();
         } else {
             alert('Error deleting incident');
