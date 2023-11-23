@@ -42,12 +42,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// Function to serve static files for different directories
-function serveDirectory(directoryName) {
+function serveDirectory(directoryName) { // fonction pour avoir accès aux fichiers 
   app.use(`/${directoryName}`, express.static(__dirname + `/${directoryName}`));
 }
 
-// Serve multiple static directories
 serveDirectory('static'); 
 serveDirectory('scripts');
 serveDirectory('images');
@@ -63,13 +61,11 @@ app.get('/login', async (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-  // Destroy the session
   req.session.destroy((err) => {
     if (err) {
       console.error(err);
       res.status(500).send('Internal Server Error');
     } else {
-      // Redirect to the login page after destroying the session
       res.redirect('/login');
     }
   });
@@ -88,16 +84,12 @@ app.get('/test', async (req, res) => {
 });
 
 app.get('/profile',isAuth, async (req, res) => {
-  // Retrieve user details from the session or database
   try {
-    // Find the user with the provided username stored in session
     const user = await LoginSingupCollection.findOne({ username: req.session.user });
 
     if (user) {
-      // Render the profile page with user details
       res.render('profile.ejs', { username: user.username, email: user.email });
     } else {
-      // Handle the case where the user is not found
       res.status(404).send('User not found');
     }
   } catch (error) {
@@ -112,10 +104,8 @@ app.get('/profile',isAuth, async (req, res) => {
 
 
 app.get('/incident', isAuth, (req, res) => {
-  // Access the entered address from the query parameters
   const address = req.query.address;
 
-  // Assuming you have some data to pass, replace this with your actual data
   const incidentData = {
     location: address,
   };
@@ -140,7 +130,6 @@ app.get('/getUserIncidents', isAuth, async (req, res) => {
 app.get('/getallIncidents', async (req, res) => {
   try {
     console.log("getAllIncidents"); 
-    // If you want to fetch all incidents regardless of user, remove the { username } filter
     const incidents = await IncidentCollection.find({});
     res.json(incidents);
   } catch (error) {
@@ -172,7 +161,6 @@ app.post('/saveIncident/:incidentId', isAuth, async (req, res) => {
       const { incidentId } = req.params;
       const { incidentType, location, description } = req.body;
 
-      // You may want to add validation here to make sure the content is safe to save
 
       const result = await IncidentCollection.updateOne(
           { _id: incidentId },
@@ -207,7 +195,6 @@ app.post('/signup', async (req, res) => {
       password: hashedPassword,
     };
 
-    // Save the user with the hashed password
     await LoginSingupCollection.create(data);
 
     res.render('login.ejs');
@@ -223,29 +210,23 @@ app.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // Find the user with the provided username
     const user = await LoginSingupCollection.findOne({ username });
 
     if (user) {
-      // Compare the entered password with the hashed password stored in the database
       const passwordMatch = await bcrypt.compare(password, user.password);
        
-      // this method protects agains rainbow table attacks
 
       if (passwordMatch) {
         req.session.isAuth = true;
         req.session.user = username;
-        // Passwords match, user is authenticated
         console.log("user is authenticated");
         
         res.redirect('/about');
       } else {
-        // Incorrect password
         console.log("Incorrect password");
         res.render('login.ejs', { message: 'Incorrect password' });
       }
     } else {
-      // User not found
       res.render('login.ejs');
     }
   } catch (error) {
@@ -268,7 +249,7 @@ app.post('/addIncident', isAuth, async (req, res) => {
 
     await IncidentCollection.create(newIncident);
 
-    res.redirect('/profile'); // Redirect to a success page or back to the form
+    res.redirect('/profile'); 
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');

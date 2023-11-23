@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         const resultItem = document.createElement('p');
                         resultItem.textContent = `${displayName}`;
                         resultItem.addEventListener('click', function () {
-                            // Set the clicked suggestion as the input value
                             addressInput.value = displayName;
                             resultContainer.style.display = 'none'; // Hide the container after selection
                         });
@@ -43,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (query.length >= 3) {
             fetchAutocompleteResults(query);
         } else {
-            resultContainer.innerHTML = ''; // Clear results if input is less than 3 characters
-            resultContainer.style.display = 'none'; // Hide the container if input is less than 3 characters
+            resultContainer.innerHTML = ''; // Clear results if less than 3 characters
+            resultContainer.style.display = 'none'; // Hide the container less than 3 characters
         }
     });
 });
