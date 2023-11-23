@@ -30,3 +30,5 @@ function checkPassword() {
     return true;
 
 }
+
+module.exports = {checkPassword};
