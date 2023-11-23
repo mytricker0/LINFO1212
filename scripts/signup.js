@@ -1,3 +1,4 @@
+// check if the password match
 function checkPassword() {
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
@@ -24,7 +25,6 @@ function checkPassword() {
           
     }
 
-    // If the password is empty, reset the message and enable the submit button
     message.textContent = "";
     submitButton.disabled = false;
     return true;

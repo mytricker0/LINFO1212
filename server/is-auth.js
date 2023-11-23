@@ -4,7 +4,6 @@ module.exports = (req, res, next) => {
       next();
     } else {
       req.session.error = "You have to Login first";
-      // destroy the session
         req.session.destroy(() => {
             res.redirect("/login");
         });

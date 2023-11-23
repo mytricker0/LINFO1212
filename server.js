@@ -182,13 +182,10 @@ app.post('/signup', async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    // Generate a salt
     const saltRounds = 10;
     const salt = await bcrypt.genSalt(saltRounds);
-    // console.log(salt); ex : 2b$10$j8YTROunl67T4o34cq/3wO
-    // Hash the password with the generated salt
     const hashedPassword = await bcrypt.hash(password, salt);
-    // console.log(hashedPassword); ex : $2b$10$j8YTROunl67T4o34cq/3wOOIWIA98DMdBk9hYQy5jOyGIll0ibT8O
+    
     const data = {
       username: username,
       email: email,

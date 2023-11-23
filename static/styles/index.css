@@ -7,7 +7,6 @@ body {
    justify-content: center;
    align-items: center;
    margin: 0;
-   /* Removed height: 100vh; */
 }
 
 .starter-template {
@@ -19,21 +18,20 @@ body {
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   min-height: 100vh; /* Changed from height to min-height */
-   position: relative; /* Changed from fixed to relative */
+   min-height: 100vh;
+   position: relative;
    width: 50%;
-   background: rgba(255,255,255,1); /* to align with profile page */   
+   background: rgba(255,255,255,1);
 }
 
-/* Style the form */
 #address-form {
    text-align: center;
-   margin-bottom: 20px; /* Add some space between the form and the results */
+   margin-bottom: 20px;
 }
 
 #address {
    padding: 10px;
-   border: 2px solid #333; /* Add a border to the input field */
+   border: 2px solid #333;
    border-radius: 5px;
    font-size: 16px;
    width: 300px;
@@ -49,9 +47,9 @@ button[type="submit"] {
    font-size: 16px;
 }
 
-/* Style the result container */
+
 #result {
-   display: none; /* Initially hide the result container */
+   display: none;
    background-color: white;
    border: 1px solid #ccc;
    border-radius: 5px;
@@ -68,14 +66,14 @@ button[type="submit"] {
    color: black;
 }
 
-/* Style the 'No results found' message */
+
 #result:empty::before {
    content: 'No results found.';
    font-size: 14px;
    color: black;
 }
 
-/* Add some spacing between the input field and the results */
+
 #result + #address-form {
    margin-top: 20px;
 }

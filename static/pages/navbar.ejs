@@ -27,24 +27,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="/test">test</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Contact
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Sys admin</a>
-                    <a class="dropdown-item" href="#">Editor</a>
-                </ul>
-            </li> -->
         </ul>
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <% if (locals.isAuthenticated) { %>
             <ul class="navbar-nav ms-auto">
-                <!-- Use ms-auto to align the dropdown to the right -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="/images/utilisateur.png" alt="Profile Icon" class="profile-icon">

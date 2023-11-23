@@ -33,15 +33,15 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s, box-shadow 0.3s;
-    margin-right: 10px; /* Add space between buttons */
+    margin-right: 10px;
 }
 
 button.edit-button {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border: 1px solid #333;
-    background-color: #e9ecef; /* Change background color for edit button */
-    color: #333; /* Change text color for edit button */
+    background-color: #e9ecef;
+    color: #333;
 }
 
 button.delete-button {
@@ -50,11 +50,11 @@ button.delete-button {
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     border-right: 1px solid #333;
-    background-color: #e9ecef; /* Change background color for delete button */
-    color: #333; /* Change text color for delete button */
+    background-color: #e9ecef;
+    color: #333;
 }
 
-/* Responsive adjustments for smaller screens */
+
 @media (max-width: 800px) {
     .incident-card {
         flex: 0 1 calc(50% - 20px); /* Show 2 cards per row */

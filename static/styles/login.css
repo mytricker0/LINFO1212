@@ -9,7 +9,7 @@
    margin-top: 15%;
 }
 
-/* Input field styles */
+
 .log {
    width: 100%;
    padding: 10px;;
@@ -19,12 +19,11 @@
    font-size: 16px;
 }
 
-/* Login button styles */
+
 .log_button {
    width: 100%;
    padding: 15px;
    background: linear-gradient(to right, #cf1a1a, #2194ff);
-   /*  #7af8ff #0a8a30  cf1a1a 2194ff*/
    border: none;
    border-radius: 5px;
    font-size: 18px;
@@ -32,16 +31,14 @@
    cursor: pointer;
 }
 
-/* Login button hover effect */
 .log_button:hover {
    background: linear-gradient(to right, #31a365, #11e026);
 }
 .log_button[disabled]:hover {
    background: linear-gradient(to right, #ff4d4d, #ff0000);
-   cursor: not-allowed; /* Change cursor to not-allowed */
+   cursor: not-allowed;
 }
 
-/* Sign-up link styles */
 .signup {
    margin-top: 15px;
 }

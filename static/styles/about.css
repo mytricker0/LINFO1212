@@ -26,8 +26,8 @@ body {
 }
 
 .bottom {
-    background-color: #000; /* Background color for the bottom section */
-    color: #fff; /* Text color in the bottom section */
+    background-color: #000;
+    color: #fff; 
     text-align: center;
     padding: 6%;
     margin-top: 0%;

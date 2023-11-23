@@ -19,10 +19,8 @@
     <script src="/scripts/signup.js"> </script>
     
 
-
-<!-- signup code-->
 <body>
-    <%- include('navbar.ejs') %>  <!-- This is where the navbar will be fetched -->
+    <%- include('navbar.ejs') %>
     
     <form action="/signup" method="post" class="login" onsubmit="return checkPassword()" >
         <input type="text" id="email" name="email" required placeholder="Email" class="log"><br><br>
