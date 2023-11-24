@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const port = 3000;
 
-var privateKey = fs.readFileSync('./key.pem' );
+var privateKey = fs.readFileSync('./key.pem' ); 
 var certificate = fs.readFileSync('./cert.pem' );
 
 const store = new MongoDBSession({
@@ -60,8 +60,8 @@ app.get('/login', async (req, res) => {
   res.render('login.ejs');
 });
 
-app.get('/logout', (req, res) => {
-  req.session.destroy((err) => {
+app.get('/logout', (req, res) => { // fonction pour se déconnecter
+  req.session.destroy((err) => { // on supprime les cookies donc il est deco
     if (err) {
       console.error(err);
       res.status(500).send('Internal Server Error');
@@ -83,12 +83,12 @@ app.get('/test', async (req, res) => {
   res.render('test.ejs');
 });
 
-app.get('/profile',isAuth, async (req, res) => {
+app.get('/profile',isAuth, async (req, res) => { // fonction pour afficher le profile
   try {
-    const user = await LoginSingupCollection.findOne({ username: req.session.user });
+    const user = await LoginSingupCollection.findOne({ username: req.session.user }); // on cherche l'utilisateur dans la DB
 
     if (user) {
-      res.render('profile.ejs', { username: user.username, email: user.email });
+      res.render('profile.ejs', { username: user.username, email: user.email }); // on affiche le profile avec l'email et le username du user
     } else {
       res.status(404).send('User not found');
     }
@@ -115,11 +115,11 @@ app.get('/incident', isAuth, (req, res) => {
 
 
 
-app.get('/getUserIncidents', isAuth, async (req, res) => {
+app.get('/getUserIncidents', isAuth, async (req, res) => { // L'argument isAuth est le middleware qui vérifie si l'utilisateur est authentifié
   try {
     console.log("getUserIncidents");
     const username = req.session.user;
-    const incidents = await IncidentCollection.find({ username });
+    const incidents = await IncidentCollection.find({ username }); // on cherche les incidents de l'utilisateur dans la DB
     res.json(incidents);
   } catch (error) {
     res.status(500).send('Internal Server Error');
@@ -130,7 +130,7 @@ app.get('/getUserIncidents', isAuth, async (req, res) => {
 app.get('/getallIncidents', async (req, res) => {
   try {
     console.log("getAllIncidents"); 
-    const incidents = await IncidentCollection.find({});
+    const incidents = await IncidentCollection.find({}); // on cherche tous les incidents dans la DB
     res.json(incidents);
   } catch (error) {
     console.error(error);
@@ -138,10 +138,10 @@ app.get('/getallIncidents', async (req, res) => {
   }
 });
 
-app.delete('/deleteIncident/:incidentId', isAuth, async (req, res) => {
+app.delete('/deleteIncident/:incidentId', isAuth, async (req, res) => { // fonction pour supprimer un incident
   try {
     const { incidentId } = req.params;
-    const result = await IncidentCollection.deleteOne({ _id: incidentId });
+    const result = await IncidentCollection.deleteOne({ _id: incidentId }); // id de l'incident dans la DB
     if (result.deletedCount === 1) {
       res.json({ success: true });
     } else {
@@ -156,7 +156,7 @@ app.delete('/deleteIncident/:incidentId', isAuth, async (req, res) => {
 
 
 
-app.post('/saveIncident/:incidentId', isAuth, async (req, res) => {
+app.post('/saveIncident/:incidentId', isAuth, async (req, res) => { // fonction pour sauvegarder un incident
   try {
       const { incidentId } = req.params;
       const { incidentType, location, description } = req.body;
@@ -183,16 +183,16 @@ app.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
 
     const saltRounds = 10;
-    const salt = await bcrypt.genSalt(saltRounds);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const salt = await bcrypt.genSalt(saltRounds); // on cree un salt pour le password
+    const hashedPassword = await bcrypt.hash(password, salt); // on hash le password avec le salt
     
-    const data = {
+    const data = { // pour la database 
       username: username,
       email: email,
       password: hashedPassword,
     };
 
-    await LoginSingupCollection.create(data);
+    await LoginSingupCollection.create(data); // on ajoute l'utilisateur dans la DB
 
     res.render('login.ejs');
   } catch (error) {
@@ -207,10 +207,11 @@ app.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    const user = await LoginSingupCollection.findOne({ username });
+    const user = await LoginSingupCollection.findOne({ username }); // on cherche l'utilisateur dans la DB
+    // pour prendre son mdp encrypté
 
     if (user) {
-      const passwordMatch = await bcrypt.compare(password, user.password);
+      const passwordMatch = await bcrypt.compare(password, user.password); // on check si le password est bon 
        
 
       if (passwordMatch) {
@@ -232,7 +233,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.post('/addIncident', isAuth, async (req, res) => {
+app.post('/addIncident', isAuth, async (req, res) => { // fonction pour ajouter un incident
   try {
     const { incidentType, location, description } = req.body;
     const username = req.session.user; 
@@ -254,7 +255,7 @@ app.post('/addIncident', isAuth, async (req, res) => {
 });
 
 
-const server = https.createServer({
+const server = https.createServer({ // pour le https
   key: privateKey,
   cert: certificate,
   passphrase: 'ingi'

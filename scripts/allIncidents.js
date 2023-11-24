@@ -1,8 +1,8 @@
-function fetchAndDisplayIncidents(endpoint) {
+function fetchAndDisplayIncidents(endpoint) { //pour afficher les incidents
     fetch(endpoint)
     .then(response => response.json())
     .then(incidents => {
-        const incidentsList = document.getElementById('incidents-list');
+        const incidentsList = document.getElementById('incidents-list'); 
         incidents.forEach(incident => {
             const card = document.createElement('div');
             card.className = 'incident-card';
@@ -23,7 +23,7 @@ function fetchAndDisplayIncidents(endpoint) {
     })
     .catch(error => console.error('Error:', error));
 };
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() { // des que la page est chargée, on affiche les incidents
     fetchAndDisplayIncidents('/getallIncidents');
 });
 
