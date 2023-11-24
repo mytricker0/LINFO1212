@@ -4,7 +4,7 @@ function makeEditable(element) {
     element.classList.add('editable');
 }
 
-function deleteIncident(incidentId, cardElement) { // en envoie une requete au server.js pour supprimer l'incident
+function deleteIncident(incidentId, cardElement) { // on envoie une requete au server.js pour supprimer l'incident
     fetch(`/deleteIncident/${incidentId}`, {
         method: 'DELETE'
     })
