@@ -4,7 +4,7 @@ function makeEditable(element) {
     element.classList.add('editable');
 }
 
-function deleteIncident(incidentId, cardElement) { // on envoie une requete au server.js pour supprimer l'incident
+function deleteIncident(incidentId, cardElement) { // en envoie une requete au server.js pour supprimer l'incident
     fetch(`/deleteIncident/${incidentId}`, {
         method: 'DELETE'
     })
@@ -55,14 +55,14 @@ function saveIncident(incidentId, typeElement, locationElement, descriptionEleme
     });
 }
 
-// Event listener for the DOM content loaded
-function fetchAndDisplayIncidents(endpoint) {
+
+function fetchAndDisplayIncidents(endpoint) { 
     fetch(endpoint)
     .then(response => response.json())
     .then(incidents => {
         const incidentsList = document.getElementById('incidents-list');
         incidents.forEach(incident => {
-            const card = document.createElement('div');
+            const card = document.createElement('div'); 
             card.className = 'incident-card';
             const typeElement = document.createElement('p');
             const locationElement = document.createElement('p');
@@ -73,7 +73,7 @@ function fetchAndDisplayIncidents(endpoint) {
             descriptionElement.textContent = incident.description;
 
             
-            const editButton = document.createElement('button');
+            const editButton = document.createElement('button'); //Bouton pour editer l'incident
             editButton.textContent = 'Edit';
             editButton.classList.add('edit-button');
             editButton.onclick = function() {
@@ -86,11 +86,11 @@ function fetchAndDisplayIncidents(endpoint) {
                 };
             };
 
-            const deleteButton = document.createElement('button');
+            const deleteButton = document.createElement('button'); //Bouton pour supprimer l'incident
             deleteButton.textContent = 'Delete';
             deleteButton.classList.add('delete-button');
             deleteButton.onclick = function() {
-                if (confirm('Are you sure you want to delete this incident?')) {
+                if (confirm('Are you sure you want to delete this incident?')) { // un pop up s'affiche pour confirmer la suppression
                     deleteIncident(incident._id, card);
                 }
             };
@@ -105,6 +105,6 @@ function fetchAndDisplayIncidents(endpoint) {
     })
     .catch(error => console.error('Error:', error));
 };
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() { // des que la page est chargée, on affiche les incidents 
     fetchAndDisplayIncidents('/getUserIncidents');
 });
