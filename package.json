@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "proj en app sinf",
   "main": "index.js",
+  "jest": {
+    "verbose":true
+    },    
   "scripts": {
     "test": "jest"
   },
